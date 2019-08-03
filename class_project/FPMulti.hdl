@@ -1,0 +1,36 @@
+//7 bit mantissa
+//8 bit exponent
+//1 sign
+
+CHIP FPMulti
+{
+	IN m1[7], e1[8], s1, m2[7], e2[8], s2;
+	OUT out[16],cout;
+
+	PARTS:
+	Bit8Multi(m[0..6]=m1[0..6], m[7]=true, q[0..6]=m2[0..6], q[7]=true, out[15]=a0, out[14]=a1, out[13]=a2, out[12]=a3, out[11]=a4, out[10]=a5, out[9]=a6, out[8]=a7, out[7]=a8);
+	
+
+	Mux(a=a2, b=a1, sel=a0, out=out[6]);
+	Mux(a=a3, b=a2, sel=a0, out=out[5]);
+	Mux(a=a4, b=a3, sel=a0, out=out[4]);
+	Mux(a=a5, b=a4, sel=a0, out=out[3]);
+	Mux(a=a6, b=a5, sel=a0, out=out[2]);
+	Mux(a=a7, b=a6, sel=a0, out=out[1]);
+	Mux(a=a8, b=a7, sel=a0, out=out[0]);
+
+	
+
+	Bit16Adder(a[15]=false , a[14]=false , a[13]=false , a[12]=false , a[11]=false , a[10]=false , a[9]=false , a[8]=false , a[0..7]=e1[0..7], b[15]=false , b[14]=false , b[13]=false , b[12]=false , b[11]=false , b[10]=false , b[9]=false , b[8]=false , b[0..7]=e2[0..7],c=false , out=temp);
+
+	Bit16Adder(a=temp,b[0]=true,b[1]=true,b[2]=true,b[3]=true,b[4]=true,b[5]=true,b[6]=true,b[7]=false,b[8]=false,b[9]=false,b[10]=false,b[11]=false,b[12]=false,b[13]=false,b[14]=false,b[15]=false,c=true,out=temp1);
+
+	
+
+
+	Bit16Adder(a=temp1, b[15]=false , b[14]=false , b[13]=false , b[12]=false , b[11]=false , b[10]=false , b[9]=false , b[8]=false , b[7]=false , b[6]=false , b[5]=false , b[4]=false , b[3]=false , b[2]=false , b[1]=false , b[0]=a0, out[0..7]=out[7..14],c=false,out[8]=cout);
+
+
+	Xor(a=s1, b=s2, out=out[15]);
+
+}

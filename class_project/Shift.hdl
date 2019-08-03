@@ -1,0 +1,49 @@
+CHIP Shift
+{
+IN a[16], sel;
+OUT b[16],cout;
+
+PARTS:
+
+Not(in=a[0],out = temp);
+And(a=a[0],b=temp,out=zero);
+Xor(a=a[0],b=temp,out=one);
+
+Xor(a=a[1], b=zero, out=a0);
+Xor(a=a[2], b=zero, out=a1);
+Xor(a=a[3], b=zero, out=a2);
+Xor(a=a[4], b=zero, out=a3);
+Xor(a=a[5], b=zero, out=a4);
+Xor(a=a[6], b=zero, out=a5);
+Xor(a=a[7], b=zero, out=a6);
+Xor(a=a[8], b=zero, out=a7);
+Xor(a=a[9], b=zero, out=a8);
+Xor(a=a[10], b=zero, out=a9);
+Xor(a=a[11], b=zero, out=a10);
+Xor(a=a[12], b=zero, out=a11);
+Xor(a=a[13], b=zero, out=a12);
+Xor(a=a[14], b=zero, out=a13);
+Xor(a=a[15], b=zero, out=a14);
+Xor(a=zero, b=zero, out=a15);
+
+Xor(a=zero, b=zero, out=b0);
+Xor(a=a[0], b=zero, out=b1);
+Xor(a=a[1], b=zero, out=b2);
+Xor(a=a[2], b=zero, out=b3);
+Xor(a=a[3], b=zero, out=b4);
+Xor(a=a[4], b=zero, out=b5);
+Xor(a=a[5], b=zero, out=b6);
+Xor(a=a[6], b=zero, out=b7);
+Xor(a=a[7], b=zero, out=b8);
+Xor(a=a[8], b=zero, out=b9);
+Xor(a=a[9], b=zero, out=b10);
+Xor(a=a[10], b=zero, out=b11);
+Xor(a=a[11], b=zero, out=b12);
+Xor(a=a[12], b=zero, out=b13);
+Xor(a=a[13], b=zero, out=b14);
+Xor(a=a[14], b=zero, out=b15);
+
+Or(a=false,b=false,out=cout);
+
+Mux16(a[0]=b0, a[1]=b1, a[2]=b2, a[3]=b3, a[4]=b4, a[5]=b5, a[6]=b6, a[7]=b7, a[8]=b8, a[9]=b9, a[10]=b10, a[11]=b11, a[12]=b12, a[13]=b13, a[14]=b14, a[15]=b15, b[0]=a0, b[1]=a1, b[2]=a2, b[3]=a3, b[4]=a4, b[5]=a5, b[6]=a6, b[7]=a7, b[8]=a8, b[9]=a9, b[10]=a10, b[11]=a11, b[12]=a12, b[13]=a13, b[14]=a14, b[15]=a15, sel=sel, out[0..15]=b[0..15]);
+}

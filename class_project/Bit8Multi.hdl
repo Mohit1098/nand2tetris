@@ -1,0 +1,16 @@
+CHIP Bit8Multi{
+	
+	IN m[8],q[8];
+	OUT out[16];
+
+PARTS:
+	Level(m=m,q=q[0],ppi=false,ppij[1..7]=t0,ppij[0]=out[0],ppl=c0,cin=false);
+	Level(m=m,q=q[1],ppi[0..6]=t0,ppi[7]=c0,ppij[1..7]=t1,ppij[0]=out[1],ppl=c1,cin=false);
+	Level(m=m,q=q[2],ppi[0..6]=t1,ppi[7]=c1,ppij[1..7]=t2,ppij[0]=out[2],ppl=c2,cin=false);
+	Level(m=m,q=q[3],ppi[0..6]=t2,ppi[7]=c2,ppij[1..7]=t3,ppij[0]=out[3],ppl=c3,cin=false);
+	Level(m=m,q=q[4],ppi[0..6]=t3,ppi[7]=c3,ppij[1..7]=t4,ppij[0]=out[4],ppl=c4,cin=false);
+	Level(m=m,q=q[5],ppi[0..6]=t4,ppi[7]=c4,ppij[1..7]=t5,ppij[0]=out[5],ppl=c5,cin=false);
+	Level(m=m,q=q[6],ppi[0..6]=t5,ppi[7]=c5,ppij[1..7]=t6,ppij[0]=out[6],ppl=c6,cin=false);
+	Level(m=m,q=q[7],ppi[0..6]=t6,ppi[7]=c6,ppij=out[7..14],ppl=out[15],cin=false);
+
+}

@@ -1,0 +1,32 @@
+CHIP Bit16Adder{
+	IN a[16],b[16],c;
+	OUT out[16],cout;
+
+	PARTS:
+
+	Xor(a=b[0],b=c,out=d0);
+	Xor(a=b[1],b=c,out=d1);
+	Xor(a=b[2],b=c,out=d2);
+	Xor(a=b[3],b=c,out=d3);
+	Xor(a=b[4],b=c,out=d4);
+	Xor(a=b[5],b=c,out=d5);
+	Xor(a=b[6],b=c,out=d6);
+	Xor(a=b[7],b=c,out=d7);
+	Xor(a=b[8],b=c,out=d8);
+	Xor(a=b[9],b=c,out=d9);
+	Xor(a=b[10],b=c,out=d10);
+	Xor(a=b[11],b=c,out=d11);
+	Xor(a=b[12],b=c,out=d12);
+	Xor(a=b[13],b=c,out=d13);
+	Xor(a=b[14],b=c,out=d14);
+	Xor(a=b[15],b=c,out=d15);
+
+	Bit4Adder(a[0]=a[0],a[1]=a[1],a[2]=a[2],a[3]=a[3],b[0]=d0,b[1]=d1,b[2]=d2,b[3]=d3,c=c,cout=c4,out[0]=out[0],out[1]=out[1],out[2]=out[2],out[3]=out[3]);
+
+	Bit4Adder(a[0]=a[4],a[1]=a[5],a[2]=a[6],a[3]=a[7],b[0]=d4,b[1]=d5,b[2]=d6,b[3]=d7,c=c4,cout=c8,out[0]=out[4],out[1]=out[5],out[2]=out[6],out[3]=out[7]);
+
+	Bit4Adder(a[0]=a[8],a[1]=a[9],a[2]=a[10],a[3]=a[11],b[0]=d8,b[1]=d9,b[2]=d10,b[3]=d11,c=c8,cout=c12,out[0]=out[8],out[1]=out[9],out[2]=out[10],out[3]=out[11]);
+
+	Bit4Adder(a[0]=a[12],a[1]=a[13],a[2]=a[14],a[3]=a[15],b[0]=d12,b[1]=d13,b[2]=d14,b[3]=d15,c=c12,cout=cout,out[0]=out[12],out[1]=out[13],out[2]=out[14],out[3]=out[15]);
+	
+}
