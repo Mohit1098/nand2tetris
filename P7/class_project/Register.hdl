@@ -1,0 +1,9 @@
+CHIP Parallelshift{
+	IN a,d, sh,L,SIr,SIl;
+	OUT out;
+
+	PARTS:
+	Mux4way(a=a,b=d,c=SIr,d=SIl, sel[0]=L, sel[1]=sh, out=t);
+	DFF(in=t, out=out);
+
+}

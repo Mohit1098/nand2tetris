@@ -1,0 +1,9 @@
+CHIP Bit1Multi{
+
+IN m,q,cin,ppi;
+OUT cout,ppij;
+
+	PARTS:
+		And(a=m,b=q,out=mq);
+		FullAdder(a=ppi,b=mq,c=cin,sum=ppij,carry=cout);
+}

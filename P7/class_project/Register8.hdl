@@ -1,0 +1,22 @@
+CHIP Register8{
+	IN d[8],sh,SIr,SIl;
+	OUT out[8];
+
+	PARTS:
+	Mux4way(a=temp7,b=d[7],c=temp6,d=SIl, sel[0]=l, sel[1]=sh, out=Q7);
+	DFF(in=Q7, out=out[7],out=temp7);
+	Mux4way(a=temp6,b=d[6],c=temp5,d=temp7, sel[0]=l, sel[1]=sh, out=Q6);
+	DFF(in=Q6, out=out[6],out=temp6);
+	Mux4way(a=temp5,b=d[5],c=temp4,d=temp6, sel[0]=l, sel[1]=sh, out=Q5);
+	DFF(in=Q5, out=out[5],out=temp5);
+	Mux4way(a=temp4,b=d[4],c=temp3,d=temp5, sel[0]=l, sel[1]=sh, out=Q4);
+	DFF(in=Q4, out=out[4],out=temp4);
+	Mux4way(a=temp3,b=d[3],c=temp2,d=temp4, sel[0]=l, sel[1]=sh, out=Q3);
+	DFF(in=Q3, out=out[3],out=temp3);43
+	Mux4way(a=temp2,b=d[2],c=temp1,d=temp3, sel[0]=l, sel[1]=sh, out=Q2);
+	DFF(in=Q2, out=out[2],out=temp2);
+	Mux4way(a=temp1,b=d[1],c=temp0,d=temp2, sel[0]=l, sel[1]=sh, out=Q1);
+	DFF(in=Q1, out=out[1],out=temp1);
+	Mux4way(a=temp0,b=d[0],c=SIr,d=temp1, sel[0]=l, sel[1]=sh, out=Q0);
+	DFF(in=Q0, out=out[0],out=temp0);
+	}

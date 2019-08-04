@@ -1,0 +1,16 @@
+CHIP Level{
+
+IN m[8],q,ppi[8],cin;
+OUT ppij[8],ppl;
+
+PARTS:
+	Bit1Multi(m=m[0],q=q,cin=cin,ppi=ppi[0],cout=c1,ppij=ppij[0]);
+	Bit1Multi(m=m[1],q=q,ppi=ppi[1],cin=c1,cout=c2,ppij=ppij[1]);
+	Bit1Multi(m=m[2],q=q,ppi=ppi[2],cin=c2,cout=c3,ppij=ppij[2]);
+	Bit1Multi(m=m[3],q=q,ppi=ppi[3],cin=c3,cout=c4,ppij=ppij[3]);
+	Bit1Multi(m=m[4],q=q,ppi=ppi[4],cin=c4,cout=c5,ppij=ppij[4]);
+	Bit1Multi(m=m[5],q=q,ppi=ppi[5],cin=c5,cout=c6,ppij=ppij[5]);
+	Bit1Multi(m=m[6],q=q,ppi=ppi[6],cin=c6,cout=c7,ppij=ppij[6]);
+	Bit1Multi(m=m[7],q=q,ppi=ppi[7],cin=c7,cout=ppl,ppij=ppij[7]);
+
+}

@@ -1,0 +1,34 @@
+CHIP Bit4Adder{
+	IN a[4],b[4],c;
+	OUT cout,out[4];
+
+	PARTS:
+	Xor(a=a[0],b=b[0],out=p0);
+	Xor(a=a[1],b=b[1],out=p1);
+	Xor(a=a[2],b=b[2],out=p2);
+	Xor(a=a[3],b=b[3],out=p3);
+
+	And(a=a[0],b=b[0],out=g0);
+	And(a=a[1],b=b[1],out=g1);
+	And(a=a[2],b=b[2],out=g2);
+	And(a=a[3],b=b[3],out=g3);
+
+	And(a=p0,b=c,out=t0);
+	Or(a=g0,b=t0,out=c1);
+
+	And(a=p1,b=c1,out=t1);
+	Or(a=g1,b=t1,out=c2);
+
+	And(a=p2,b=c2,out=t2);
+	Or(a=g2,b=t2,out=c3);
+
+	And(a=p3,b=c3,out=t3);
+	Or(a=g3,b=t3,out=cout);
+
+	Xor(a=p0,b=c,out=out[0]);
+	Xor(a=p1,b=c1,out=out[1]);
+	Xor(a=p2,b=c2,out=out[2]);
+	Xor(a=p3,b=c3,out=out[3]);
+
+
+}

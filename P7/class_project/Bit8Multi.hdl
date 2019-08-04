@@ -1,0 +1,32 @@
+CHIP Bit8Multi{
+	
+	IN m[8],q[8],cin,p[8];
+	OUT ppl[16],cout;
+
+PARTS:
+	Level(m=m,q=q[0],cin=cin,ppi=p,ppij[0]=t00,ppij[1]=t01,ppij[2]=t02,ppij[3]=t03,ppij[4]=t04,ppij[5]=t05,ppij[6]=t06,ppij[7]=t07,ppl=pp0);
+	Level(m=m,q=q[1],cin=cin,ppi[0]=t01,ppi[1]=t02,ppi[2]=t03,ppi[3]=t04,ppi[4]=t05,ppi[5]=t06,ppi[6]=t07,ppi[7]=pp0,ppij[0]=t10,ppij[1]=t11,ppij[2]=t12,ppij[3]=t13,ppij[4]=t14,ppij[5]=t15,ppij[6]=t16,ppij[7]=t17,ppl=pp1);
+	Level(m=m,q=q[2],cin=cin,ppi[0]=t11,ppi[1]=t12,ppi[2]=t13,ppi[3]=t14,ppi[4]=t15,ppi[5]=t16,ppi[6]=t17,ppi[7]=pp1,ppij[0]=t20,ppij[1]=t21,ppij[2]=t22,ppij[3]=t23,ppij[4]=t24,ppij[5]=t25,ppij[6]=t26,ppij[7]=t27,ppl=pp2);
+	Level(m=m,q=q[3],cin=cin,ppi[0]=t21,ppi[1]=t22,ppi[2]=t23,ppi[3]=t24,ppi[4]=t25,ppi[5]=t26,ppi[6]=t27,ppi[7]=pp2,ppij[0]=t30,ppij[1]=t31,ppij[2]=t32,ppij[3]=t33,ppij[4]=t34,ppij[5]=t35,ppij[6]=t36,ppij[7]=t37,ppl=pp3);
+	Level(m=m,q=q[4],cin=cin,ppi[0]=t31,ppi[1]=t32,ppi[2]=t33,ppi[3]=t34,ppi[4]=t35,ppi[5]=t36,ppi[6]=t37,ppi[7]=pp3,ppij[0]=t40,ppij[1]=t41,ppij[2]=t42,ppij[3]=t43,ppij[4]=t44,ppij[5]=t45,ppij[6]=t46,ppij[7]=t47,ppl=pp4);
+	Level(m=m,q=q[5],cin=cin,ppi[0]=t41,ppi[1]=t42,ppi[2]=t43,ppi[3]=t44,ppi[4]=t45,ppi[5]=t46,ppi[6]=t47,ppij[0]=t50,ppij[1]=t51,ppij[2]=t52,ppij[3]=t53,ppij[4]=t54,ppij[5]=t55,ppij[6]=t56,ppij[7]=t57,ppi[7]=pp4,ppl=pp5);
+	Level(m=m,q=q[6],cin=cin,ppi[0]=t51,ppi[1]=t52,ppi[2]=t53,ppi[3]=t54,ppi[4]=t55,ppi[5]=t56,ppi[6]=t57,ppij[0]=t60,ppij[1]=t61,ppij[2]=t62,ppij[3]=t63,ppij[4]=t64,ppij[5]=t65,ppij[6]=t66,ppij[7]=t67,ppi[7]=pp5,ppl=pp6);
+	Level(m=m,q=q[7],cin=cin,ppi[0]=t61,ppi[1]=t62,ppi[2]=t63,ppi[3]=t64,ppi[4]=t65,ppi[5]=t66,ppi[6]=t67,ppij[0]=t70,ppij[1]=t71,ppij[2]=t72,ppij[3]=t73,ppij[4]=t74,ppij[5]=t75,ppij[6]=t76,ppij[7]=t77,ppi[7]=pp6,ppl=pp7);
+	Or(a=cin,b=t00,out=ppl[0]);
+	Or(a=cin,b=t10,out=ppl[1]);
+	Or(a=cin,b=t20,out=ppl[2]);
+	Or(a=cin,b=t30,out=ppl[3]);
+	Or(a=cin,b=t40,out=ppl[4]);
+	Or(a=cin,b=t50,out=ppl[5]);
+	Or(a=cin,b=t60,out=ppl[6]);
+	Or(a=cin,b=t70,out=ppl[7]);
+	Or(a=cin,b=t71,out=ppl[8]);
+	Or(a=cin,b=t72,out=ppl[9]);
+	Or(a=cin,b=t73,out=ppl[10]);
+	Or(a=cin,b=t74,out=ppl[11]);
+	Or(a=cin,b=t75,out=ppl[12]);
+	Or(a=cin,b=t76,out=ppl[13]);
+	Or(a=cin,b=t77,out=ppl[14]);
+	Or(a=cin,b=pp7,out=ppl[15]);
+	Or(a=false,b=false,out=cout);
+}

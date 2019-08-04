@@ -1,0 +1,19 @@
+CHIP counter{
+	IN b[3];
+	OUT out;
+	PARTS:
+
+	And(a=Q0,b=Q1,out=t0);
+	Xor(a=Q2,b=t0,out=t1);
+	DFF(in=t1,out=Q2);
+
+	Xor(a=Q0,b=Q1,out=t2);
+	DFF(in=t2,out=Q2);
+
+	Not(in=Q0,out=t3);
+	DFF(in=t3,out=Q2);
+
+	Xor
+
+
+}

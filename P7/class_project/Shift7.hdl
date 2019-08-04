@@ -1,0 +1,49 @@
+CHIP Shift7
+{
+IN a[7], s[8];
+OUT b[7];
+
+PARTS:
+
+And(a=a[6], b=s[0], out=b[6]);
+
+And(a=a[6], b=s[1], out=c0);
+And(a=a[5], b=s[0], out=c1);
+Or(a=c1, b=c0, out=b[5]);
+
+And(a=a[6], b=s[2], out=d0);
+And(a=a[5], b=s[1], out=d1);
+And(a=a[4], b=s[0], out=d2);
+Or3(in[0]=d0, in[1]=d1, in[2]=d2, out=b[4]);
+
+And(a=a[6], b=s[3], out=e0);
+And(a=a[5], b=s[2], out=e1);
+And(a=a[4], b=s[1], out=e2);
+And(a=a[3], b=s[0], out=e3);
+Or4(in[0]=e0, in[1]=e1, in[2]=e2, in[3]=e3, out=b[3]);
+
+And(a=a[6], b=s[4], out=f0);
+And(a=a[5], b=s[3], out=f1);
+And(a=a[4], b=s[2], out=f2);
+And(a=a[3], b=s[1], out=f3);
+And(a=a[2], b=s[0], out=f4);
+Or5(in[0]=f0, in[1]=f1, in[2]=f2, in[3]=f3, in[4]=f4, out=b[2]);
+
+And(a=a[6], b=s[5], out=g0);
+And(a=a[5], b=s[4], out=g1);
+And(a=a[4], b=s[3], out=g2);
+And(a=a[3], b=s[2], out=g3);
+And(a=a[2], b=s[1], out=g4);
+And(a=a[1], b=s[0], out=g5);
+Or6(in[0]=g0, in[1]=g1, in[2]=g2, in[3]=g3, in[4]=g4, in[5]=g5, out=b[1]);
+
+And(a=a[6], b=s[6], out=h0);
+And(a=a[5], b=s[5], out=h1);
+And(a=a[4], b=s[4], out=h2);
+And(a=a[3], b=s[3], out=h3);
+And(a=a[2], b=s[2], out=h4);
+And(a=a[1], b=s[1], out=h5);
+And(a=a[0], b=s[0], out=h6);
+Or7(in[0]=h0, in[1]=h1, in[2]=h2, in[3]=h3, in[4]=h4, in[5]=h5, in[6]=h6, out=b[0]);
+
+}

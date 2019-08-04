@@ -1,0 +1,23 @@
+CHIP ALU{
+	IN a[16],b[16],sel[4],in;
+	OUT out[16],over;
+
+	PARTS:
+	//DMux(in=in,sel=sel,a=e0,b=e1,c=e2,d=e3,e=e4,f=e5,g=e6,h=e7,i=e8,j=e9,k=e10,l=e11,m=e12,n=e13,o=e14,p=e15);
+	Not(in=in,out=notin);
+
+	And16(a=a,b=b,out=o0,cout=t0);
+	Or16(a=a,b=b,out=o1,cout=t1);
+	Not16(in=a,out=o2,cout=t2);
+	Xor16(a=a,b=b,out=o3,cout=t3);
+	Bit16Adder(a=a,b=b,c=in,out=o4,cout=t4);
+	Bit16Adder(a=a,b=b,c=notin,out=o5,cout=t5);
+	Bit8Multi(m=a[0..7],q=b[0..7],cin=in,p[0]=in,p[1]=in,p[2]=in,p[3]=in,p[4]=in,p[5]=in,p[6]=in,p[7]=in,ppl=o6,cout=t6);
+	FPMulti(s1=a[15],e1=a[7..14],m1=a[0..6],s2=b[15],e2=b[7..14],m2=b[0..6],cin0=false,cin1=true,out=o7,cout=t7);
+	Shift(a=a,sel=false,b=o8,cout=t8);
+	Shift(a=a,sel=true,b=o9,cout=t9);
+
+	Mux16way(a=t0,b=t1,c=t2,d=t3,e=t4,f=t5,g=t6,h=t7,i=t8,j=t9,sel=sel,out=over);
+	Mux16Way16(a=o0,b=o1,c=o2,d=o3,e=o4,f=o5,g=o6,h=o7,i=o8,j=o9,sel=sel,out=out);
+
+}
